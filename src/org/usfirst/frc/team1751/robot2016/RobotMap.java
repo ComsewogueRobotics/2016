@@ -17,4 +17,6 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 	public static final int DRIVESTICK = 0;
 	public static final int OPSTICK = 1;
+	
+	//small edit for git testing
 }
