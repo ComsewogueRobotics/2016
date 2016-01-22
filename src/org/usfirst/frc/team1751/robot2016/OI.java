@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class OI {
 	private Joystick driveStick, opStick;
+	
+	
 	public Joystick getDriveStick(){
 		return driveStick;
 	}
