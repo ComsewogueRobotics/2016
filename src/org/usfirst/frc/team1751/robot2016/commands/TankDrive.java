@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team1751.robot2016.Robot;
 
 /**
- *
+ * TEST FOR GIT
  */
 public class TankDrive extends Command {
 
@@ -17,6 +17,7 @@ public class TankDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
