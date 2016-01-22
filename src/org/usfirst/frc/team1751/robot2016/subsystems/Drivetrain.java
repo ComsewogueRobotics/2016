@@ -1,12 +1,14 @@
 
 package org.usfirst.frc.team1751.robot2016.subsystems;
 
+import org.usfirst.frc.team1751.robot2016.commands.TankDrive;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
-public class ExampleSubsystem extends Subsystem {
+public class Drivetrain extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -14,6 +16,7 @@ public class ExampleSubsystem extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new TankDrive());
     }
 }
 
