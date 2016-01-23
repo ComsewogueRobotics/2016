@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Drivetrain extends Subsystem {
 	private CANJaguar jag_l1,jag_l2,jag_r1,jag_r2;
-	private CANJaguar[] jags = {jag_l1, jag_l2, jag_r1, jag_r2};
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public Drivetrain(){
@@ -29,8 +28,15 @@ public class Drivetrain extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new TankDrive());
     }
-    public CANJaguar[] getJags(){
-    	return jags;
+    public void driveLeft(double speed){
+    	jag_l1.set(speed);
+    	jag_l2.set(speed);
+    }
+    public void driveRight(double speed){
+    	jag_r1.set(speed);
+    	jag_r2.set(speed);
+    }
+    
     }
 }
 
