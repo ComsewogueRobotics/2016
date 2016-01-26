@@ -37,6 +37,5 @@ public class Drivetrain extends Subsystem {
     	jag_r2.set(speed);
     }
     
-    }
 }
 
