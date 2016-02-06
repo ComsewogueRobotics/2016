@@ -1,9 +1,11 @@
 
 package org.usfirst.frc.team1751.robot2016.subsystems;
 
-import org.usfirst.frc.team1751.robot2016.commands.TankDrive;
+import org.usfirst.frc.team1751.robot2016.RobotMap;
+import org.usfirst.frc.team1751.robot2016.commands.Drive;
 
 import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -11,30 +13,34 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Drivetrain extends Subsystem {
 	private CANJaguar jag_l1,jag_l2,jag_r1,jag_r2;
+	private RobotDrive robotDrive;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public Drivetrain(){
-		jag_l1 = new CANJaguar(1);
-		jag_l2 = new CANJaguar(2);
-		jag_r1 = new CANJaguar(3);
-		jag_r2 = new CANJaguar(4);
+		jag_l1 = new CANJaguar(RobotMap.JAG_L1);
+		jag_l2 = new CANJaguar(RobotMap.JAG_L2);
+		jag_r1 = new CANJaguar(RobotMap.JAG_R1);
+		jag_r2 = new CANJaguar(RobotMap.JAG_R2);
 		jag_l1.setPercentMode();
 		jag_l2.setPercentMode();
 		jag_r1.setPercentMode();
 		jag_r2.setPercentMode();
+		robotDrive = new RobotDrive(jag_l1, jag_l2, jag_r1, jag_r2);
+		robotDrive.setSafetyEnabled(false);
+		robotDrive.setCANJaguarSyncGroup((byte) 2);
 	}
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new TankDrive());
+    	setDefaultCommand(new Drive());
     }
-    public void driveLeft(double speed){
-    	jag_l1.set(speed);
-    	jag_l2.set(speed);
+    public void drive(double move, double rotate, double modifier){
+    	robotDrive.arcadeDrive(move, rotate);
     }
-    public void driveRight(double speed){
-    	jag_r1.set(speed);
-    	jag_r2.set(speed);
+    
+    public void drive(double move, double rotate){
+    	drive(move, rotate, 1);
+    }
+    public void stop(){
+    	robotDrive.stopMotor();
     }
     
 }
